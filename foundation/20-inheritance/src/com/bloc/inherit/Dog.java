@@ -255,5 +255,20 @@ abstract class Dog {
 			default: return "large";
 		}
 	}
+	
+	public float getWeightGain()
+	{
+		return WEIGHT_GAINED_FROM_FEEDING;
+	}
+	
+	public float getWeightLoss()
+	{
+		return WEIGHT_LOSS_FROM_FEEDING;
+	}
+	
+	public float getMinWeight()
+	{
+		return MINIMUM_WEIGHT;
+	}
 
 }
