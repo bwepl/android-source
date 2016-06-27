@@ -31,13 +31,14 @@ public class Methods extends Object {
 	 * @param original Is the boolean variable which must be flipped
 	 * @return the logical opposite of the original
 	 */
-	public boolean giveMeTheOpposite(boolean original) {
+	public boolean giveMeTheOpposite(boolean original) 
+	{
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
 
 		// You are free to modify the return statement
-		return false;
+		return !original;
 	}
 
 	/*
@@ -60,6 +61,10 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
+		 for (int i=0; i <numbers.length; i++)
+		 {
+			numbers[i] *= -1;
+		 }
 	}
 
 
@@ -90,9 +95,14 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+		int len = someNumbers.length;
+		boolean[] greater= new boolean[len];
+		for (int j=0; j < len; j++)
+		{
+			greater[j] = (someNumbers[j] >= floor);
+		}
 		// You are free to modify the return statement
-		return new boolean [0];
+		return greater;
 	}
 
 	/*
@@ -117,9 +127,21 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+		int[] minMax = {someNumbers[0],someNumbers[0]};
+		
+		for (int k = 1; k <someNumbers.length; k++)
+		{
+			if  (someNumbers[k]<minMax[0])
+			{
+				minMax[0] = someNumbers[k];
+			}
+			if (someNumbers[k]>minMax[1])
+			{
+				minMax[1] = someNumbers[k];
+			}
+		}
 		// You are free to modify the return statement
-		return new int[2];
+		return minMax;
 	}
 
 
