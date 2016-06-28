@@ -8,3 +8,97 @@ package com.bloc.inherit;
  *	After growing to a "large" size, they may grow
  *	to an additional, "huge" size after 3 meals.
 /************************************************/
+
+public class GreatDane extends Dog {
+
+	void feed() 
+	{
+		mWeight += WEIGHT_GAINED_FROM_FEEDING;
+		// Pre-increment feed counter
+		if (++mFeedCounter == 3) 
+		{
+			changeSize(true);
+			mFeedCounter = 0;
+		}
+	}
+	
+		/*
+	 * final changeSize
+	 * Modify the size of the Dog by 1 move
+	 * @param grow if true, gain a size, shrink otherwise
+	 * @return nothing
+	 */
+	void changeSize(boolean grow) 
+	{
+		int sizeIndex = getSizeIndex();
+		sizeIndex = sizeIndex + (grow ? 1 : -1);
+		if (sizeIndex > 4) 
+		{
+			sizeIndex = 4;
+		} 
+		else if (sizeIndex < 0) 
+		{
+			sizeIndex = 0;
+		}
+		setSize(fromSizeIndex(sizeIndex));
+	}
+
+	/*
+	 * getSizeIndex
+	 * @param size the string value representing the size
+	 * @return an index between 0 and 3 in the
+	 * 		   array of {"tiny", "small", "average", "large"}
+	 */
+	int getSizeIndex(String size) {
+		if (size == null) 
+		{
+			// Return default "average" when missing size
+			return 2;
+		}
+
+		if( "tiny".equals(size) ) 
+		{
+			return 0;
+		} 
+		else if( "small".equals(size) ) 
+		{
+			return 1;
+		} 
+		else if( "average".equals(size) ) 
+		{
+			return 2;
+		} 
+		else if( "large".equals(size) ) 
+		{
+			return 3;
+		}
+		else if( "huge".equals(size) ) 
+		{
+			return 4;
+		}
+		else 
+		{
+			return 2;
+		}
+	}
+
+	/*
+	 * fromSizeIndex
+	 * @param index the index into the sizes array
+	 * @return a String, one of {"tiny", "small", "average", "large"}
+	 */
+	String fromSizeIndex(int index) 
+	{
+		switch(index) 
+		{
+			case 0: return "tiny";
+			case 1: return "small";
+			case 2: return "average";
+			case 3: return "large";
+			case 4: return "huge";
+			default: return "large";
+		}
+	}
+
+
+}

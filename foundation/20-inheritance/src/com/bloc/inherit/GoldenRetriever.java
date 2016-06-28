@@ -11,20 +11,21 @@ package com.bloc.inherit;
 public class GoldenRetriever extends Dog {
 	
 	int mPlayCounter = 0;
-	float weight = super.getWeight();
-	float minWeight = super.getMinWeight();
+	float weight = getWeight();
+	float minWeight = getMinWeight();
 	
 	@Override
 	public void play() 
 	{
-		super.setWeight(weight - super.getWeightLoss());
+		setWeight(weight - getWeightLost());
 		if (weight < minWeight) 
 		{
-			super.setWeight(minWeight);
+			setWeight(minWeight);
 		}
 		// Pre-increment play counter
-		if (++mPlayCounter == 3) {
-			super.changeSize(false);
+		if (++mPlayCounter == 3) 
+		{
+			changeSize(false);
 			mPlayCounter = 0;
 		}
 	}

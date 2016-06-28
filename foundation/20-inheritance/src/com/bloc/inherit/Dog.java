@@ -261,9 +261,9 @@ abstract class Dog {
 		return WEIGHT_GAINED_FROM_FEEDING;
 	}
 	
-	public float getWeightLoss()
+	public float getWeightLost()
 	{
-		return WEIGHT_LOSS_FROM_FEEDING;
+		return WEIGHT_LOST_FROM_FEEDING;
 	}
 	
 	public float getMinWeight()
