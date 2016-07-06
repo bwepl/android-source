@@ -19,6 +19,13 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the first Song constructor
 	/************************************************/
+	Song()
+	{
+		Artist artist = new Artist("john", "doe");
+		mEnsemble = new Ensemble (artist);
+		mTitle = "Yellow Submarine";
+		mYearReleased = 1966;
+	}
 
 	/*
 	 * Song
@@ -32,6 +39,10 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the second Song constructor
 	/************************************************/
+	Song(Ensemble ens,String title)
+	{
+		this(ens,title,0);
+	}
 
 	/*
 	 * Song
@@ -44,4 +55,11 @@ class Song extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the third Song constructor
 	/************************************************/
+	Song(Ensemble ens,String title, int yearReleased)
+	{
+		mEnsemble = ens;
+		mTitle = title;
+		mYearReleased = yearReleased;
+	}
+	
 }
