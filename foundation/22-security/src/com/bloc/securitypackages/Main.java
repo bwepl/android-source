@@ -8,9 +8,9 @@ package com.bloc.securitypackages;
 /************************************************/
 
 // e.g. import com.bloc.{your_package};
-import com.bloc.securitypackages.fruit.Fruit;
-import com.bloc.securitypackages.fruit.apples.*;
-import com.bloc.securitypackages.fruit.citrus.*;
+import com.bloc.securitypackages.fruit.*;
+//import com.bloc.securitypackages.fruit.apples.*;
+//import com.bloc.securitypackages.fruit.citrus.*;
 import com.bloc.securitypackages.colors.*;
 
 /************************************************
