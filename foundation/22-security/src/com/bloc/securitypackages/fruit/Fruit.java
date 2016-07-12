@@ -56,7 +56,7 @@ public abstract class Fruit extends Object {
 		mCalories = calories;
 	}
 
-	private Color getColor() {
+	public Color getColor() {
 		return mColor;
 	}
 
@@ -68,7 +68,7 @@ public abstract class Fruit extends Object {
 		return mWeight;
 	}
 
-	private void setWeight(double weight) {
+	void setWeight(double weight) {
 		mWeight = weight;
 	}
 }
