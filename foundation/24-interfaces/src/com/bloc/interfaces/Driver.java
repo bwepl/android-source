@@ -1,4 +1,4 @@
-package com.bloc.interfaces;
+package com.bloc.interfaces.people;
 
 public interface Driver {
 
