@@ -24,12 +24,15 @@ public class FavoritePastries {
 	 *	Use a HashMap to store the relationship
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
-
+	private HashMap<Integer, List<Pastry>> favMap;
 
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		
+		favMap = new HashMap<Integer, List<Pastry>>();
+		
 	}
 
 	/* 
@@ -51,6 +54,14 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		if (!favMap.contains(pastry))
+		{
+			favMap.put(rating, pastry);
+		}
+		else
+		{
+			#find and update the rating for that existing pastry
+		}
 	}
 
 	/* 
@@ -90,6 +101,16 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
+		//get keyset, itereate through the ratings keys, search for the specified pastry
+		// and return the rating of that pastry
+		Set<int> keys = favMap.keySet();
+		for(int i : keys)
+		{
+			if (Set<Pastry> pastries = getPastriesForRating(i).contains(pastry))
+			{
+				return i;
+			}
+		}
 		return -1;
 	}
 
@@ -113,7 +134,13 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+		//if(!favMap.isEmpty())
+		//{
+			//return Set<Pastry> rPastries = new HashSet<>(favMap.get(rating));
+			return new HashSet<Pastry>(favMap.get(rating));
+		//}
+		
+		#return null;
 	}
 
 }
