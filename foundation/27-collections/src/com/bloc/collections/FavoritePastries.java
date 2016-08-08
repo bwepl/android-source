@@ -25,6 +25,8 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 	private HashMap<Integer, List<Pastry>> favMap;
+	
+	private Set<int> mKeys;
 
 	public FavoritePastries() {
 		/************************************************
@@ -32,6 +34,7 @@ public class FavoritePastries {
 		/************************************************/
 		
 		favMap = new HashMap<Integer, List<Pastry>>();
+		
 		
 	}
 
@@ -50,18 +53,36 @@ public class FavoritePastries {
 	 * @param rating The rating to associate with it
 	 * @return nothing
 	 */
-	public void addPastry(Pastry pastry, int rating) {
+	public void addPastry(Pastry addPastry, int rating) {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
-		if (!favMap.contains(pastry))
+		List<Pastry> addList = new ArrayList();
+		mKeys = favMap.keySet();
+		
+		if (!mKeys.isEmpty() && removePastry(addPastry) ) 
 		{
-			favMap.put(rating, pastry);
+			//get the set of existing pastries for rating and copy into a new list , remove the existing list
+			Set <Pastry> ratingPastries = new HashSet(getPastriesForRating(rating));
+			if(!ratingPastries.isEmpty())
+			{
+				//iterate through the set, get values and add to addList to add back
+			}
+			else
+			{
+				//if its an empty set, just add to addList
+			}
+			//remove favMap(rating) 
+			
+						
 		}
-		else
+		else  // if the keyset is empty
 		{
-			#find and update the rating for that existing pastry
+			addList.add(pastry);
 		}
+		//add the new list for rating
+		favMap.put(rating, addList);
+		
 	}
 
 	/* 
@@ -80,7 +101,26 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return false;
+		int rtg =getRatingForPastry(pastry);
+		
+		if( rtg != -1)
+		{
+			List<Pastry> rtgPastries = new ArrayList(favMap.get(rtg));
+			
+			int j = rtgPastries.indexOf(pastry);
+			
+			rtgPastries.remove(j);
+			favMap.remove(rtg);
+			favMap.put(rtg, rtgPastries);
+			
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+		
 	}
 
 	/* 
@@ -103,10 +143,11 @@ public class FavoritePastries {
 		/************************************************/
 		//get keyset, itereate through the ratings keys, search for the specified pastry
 		// and return the rating of that pastry
-		Set<int> keys = favMap.keySet();
+		mKeys = favMap.keySet();
+		
 		for(int i : keys)
 		{
-			if (Set<Pastry> pastries = getPastriesForRating(i).contains(pastry))
+			if (getPastriesForRating(i).contains(pastry))
 			{
 				return i;
 			}
@@ -134,13 +175,15 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		//if(!favMap.isEmpty())
-		//{
+		if(!favMap.isEmpty())
+		{
 			//return Set<Pastry> rPastries = new HashSet<>(favMap.get(rating));
 			return new HashSet<Pastry>(favMap.get(rating));
-		//}
-		
-		#return null;
+		}
+		else
+		{
+			return Collections.emptySet();
+		}
 	}
 
 }
