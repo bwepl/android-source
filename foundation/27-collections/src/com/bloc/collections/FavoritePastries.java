@@ -26,7 +26,7 @@ public class FavoritePastries {
 	/************************************************/
 	private HashMap<Integer, List<Pastry>> favMap;
 	
-	private Set<int> mKeys;
+	private Set<Integer> mKeys;
 
 	public FavoritePastries() {
 		/************************************************
@@ -57,7 +57,7 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
-		List<Pastry> addList = new ArrayList();
+		List<Pastry> addList;
 		mKeys = favMap.keySet();
 		
 		if (!mKeys.isEmpty() && removePastry(addPastry) ) 
@@ -66,19 +66,20 @@ public class FavoritePastries {
 			Set <Pastry> ratingPastries = new HashSet(getPastriesForRating(rating));
 			if(!ratingPastries.isEmpty())
 			{
-				//iterate through the set, get values and add to addList to add back
+				addList = new ArrayList(ratingPastries);
 			}
 			else
 			{
 				//if its an empty set, just add to addList
+				addList = new ArrayList();
 			}
-			//remove favMap(rating) 
-			
-						
+			addList.add(addPastry);
+			favMap.remove(rating);
 		}
 		else  // if the keyset is empty
 		{
-			addList.add(pastry);
+			addList = new ArrayList();
+			addList.add(addPastry);
 		}
 		//add the new list for rating
 		favMap.put(rating, addList);
@@ -108,8 +109,8 @@ public class FavoritePastries {
 			List<Pastry> rtgPastries = new ArrayList(favMap.get(rtg));
 			
 			int j = rtgPastries.indexOf(pastry);
-			
 			rtgPastries.remove(j);
+			
 			favMap.remove(rtg);
 			favMap.put(rtg, rtgPastries);
 			
@@ -145,7 +146,7 @@ public class FavoritePastries {
 		// and return the rating of that pastry
 		mKeys = favMap.keySet();
 		
-		for(int i : keys)
+		for(int i : mKeys)
 		{
 			if (getPastriesForRating(i).contains(pastry))
 			{
