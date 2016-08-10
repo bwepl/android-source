@@ -60,8 +60,10 @@ public class FavoritePastries {
 		List<Pastry> addList;
 		mKeys = favMap.keySet();
 		
-		if (!mKeys.isEmpty() && removePastry(addPastry) ) 
+		if (!mKeys.isEmpty()) 
 		{
+			boolean removed = removePastry(addPastry);
+			
 			//get the set of existing pastries for rating and copy into a new list , remove the existing list
 			Set <Pastry> ratingPastries = new HashSet(getPastriesForRating(rating));
 			if(!ratingPastries.isEmpty())
@@ -146,11 +148,11 @@ public class FavoritePastries {
 		// and return the rating of that pastry
 		mKeys = favMap.keySet();
 		
-		for(int i : mKeys)
+		for(Integer i : mKeys)
 		{
-			if (getPastriesForRating(i).contains(pastry))
+			if (getPastriesForRating(i.intValue()).contains(pastry))
 			{
-				return i;
+				return i.intValue();
 			}
 		}
 		return -1;
@@ -176,7 +178,7 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		if(!favMap.isEmpty())
+		if(!favMap.isEmpty() && favMap.get(rating)!=null)
 		{
 			//return Set<Pastry> rPastries = new HashSet<>(favMap.get(rating));
 			return new HashSet<Pastry>(favMap.get(rating));
