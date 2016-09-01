@@ -14,7 +14,10 @@ public class Main extends Object {
 		 *	Perform the following block of code on a separate
 		 *	Thread, use the ImageGetter class.
 		/************************************************/
-
+		String logoURL = "https://www.google.com/images/srpr/logo11w.png";
+		ImageGetter logoImage = new ImageGetter(logoURL, true);
+		
+		/*
 		try {
 			File existingImage = new File("google_logo.png");
 			if (existingImage.exists()) {
@@ -35,7 +38,7 @@ public class Main extends Object {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
-		}
+		} */
 
 		/************************************************
 		 *	ASSIGNMENT:
