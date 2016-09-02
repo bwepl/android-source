@@ -54,7 +54,7 @@ public class ImageGetter extends Thread {
 			//if ("/".equals(System.getProperties().getProperty("file.separator"))) 
 			if (mOpenWhenCompleted)
 			{
-				Runtime.getRuntime().exec("open google_logo.png");
+				Runtime.getRuntime().exec("mspaint.exe google_logo.png");
 			} 
 			else 
 			{

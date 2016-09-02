@@ -16,6 +16,7 @@ public class Main extends Object {
 		/************************************************/
 		String logoURL = "https://www.google.com/images/srpr/logo11w.png";
 		ImageGetter logoImage = new ImageGetter(logoURL, true);
+		logoImage.start();
 		
 		/*
 		try {
